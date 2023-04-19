@@ -134,37 +134,38 @@ public class UsuariosDAORelacional {
 //        
 //        
 //    }
-//    @Override
-//     public usuarios consultar(String correo, String contraseña){
-//         
-//         String sql = "select * from usuarios where correo_electronico=? and contraseña = ? ";
-//         
-//         try {
-//              con = acceso.Conectar();
-//            ps = con.prepareStatement(sql);
-//              ps.setString(1,correo);
-//              ps.setString(2,contraseña);
-//              
-//              rs= ps.executeQuery();
-//              
-//              
-//              if (rs.next()) {
-//                  usuarios usuario = new usuarios(rs.getString(2), rs.getString(3), rs.getInt (8));
-//                  return usuario;
-//             }
-//              
-//              
-//         } catch (Exception e) {
-//         }
-//         
-//         return null;
-//         
-//         
-//         
+    
+     public usuarios consultar(String correo, String contraseña){
+         
+         String sql = "select * from usuarios where correo_electronico=? and contraseña = ? ";
+         
+         try {
+              con = acceso.Conectar();
+            ps = con.prepareStatement(sql);
+              ps.setString(1,correo);
+              ps.setString(2,contraseña);
+              
+              rs= ps.executeQuery();
+              
+              
+              if (rs.next()) {
+                  usuarios usuario = new usuarios(rs.getString(2), rs.getString(3), rs.getInt (8));
+                  return usuario;
+             }
+              
+              
+         } catch (Exception e) {
+         }
+         
+         return null;
+         
+         
+         
 
 //             public static void main(String[] args) {
 //                  UsuariosDAORelacional usuarioDAO = new UsuariosDAORelacional();
 //        usuarioDAO.crear(new usuarios(9,"David","Gonzales",14578962,"Calle Nueva","deivid@eva.com","2002-05-04",2,1,"mariobros"));
 //    }
              
+}
 }

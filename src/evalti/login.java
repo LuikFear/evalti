@@ -108,16 +108,11 @@ public class login extends javax.swing.JFrame {
        
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    
-    
+ 
    
     
     
     
-    };
     
     
     
@@ -130,38 +125,30 @@ public class login extends javax.swing.JFrame {
     
     
     
-    
+    private void consulta(){
+        
+        UsuariosDAORelacional ud = new UsuariosDAORelacional();
+        usuarios us = ud.consultar (JTusuario.getText(),jPasswordField1.getText());
+         if (us != null){
+            
+        } else {
+        }
+    MainUs MU = new MainUs();
+    MU.informacion(us);
+    MU.setVisible(true);
+    dispose();
+        
+        
+        
+        
+        
+        
     }
     
     
+
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    public void Ingresar () {
-        if  (JTusuario.getText().equals("admin")&& JTcontra.getText().equals("admin")) {
-            MainUs Newframe = new MainUs() ;
-            Newframe.setVisible(true);
-            dispose();
-     
-        }else{ 
-      
-           
-             JOptionPane.showMessageDialog(null, "Llena todos los campos");  
-               
-               }
-        }
+   
         
        
     

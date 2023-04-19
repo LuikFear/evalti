@@ -76,6 +76,10 @@ public class MainUs extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 730, 220));
+
+        J1.setBackground(new java.awt.Color(204, 204, 255));
+        J1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        J1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(J1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 40, 160, 30));
 
         b1.setText("Modificar Usuario");
@@ -157,11 +161,12 @@ public class MainUs extends javax.swing.JFrame {
     
     public void informacion (usuarios usuarios){
     
-    J1.setText("Usuario:" + usuarios.getNombre()+""+usuarios.getApellido());
+    J1.setText("Usuario: " + usuarios.getNombre()+ " " +usuarios.getApellido());
     
-            if (usuarios.getRol_id()== 1) {
+            if (usuarios.getRol_id()== 2) {
             b1.setVisible(false);
             b2.setVisible(false);
+            b3.setVisible(false);
         }
     
     }

@@ -56,6 +56,12 @@ public class usuarios {
         this.telefono = telefono;
         
     }
+//contructor para consultar
+    public usuarios(String nombre, String apellido, int rol_id) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.rol_id = rol_id;
+    }
 
     
     
