@@ -10,54 +10,64 @@ package evalti;
  * @author LuikFear
  */
 public class usuarios {
-    private String nombre ;
-    private String apellido;
-    private String rol;
-    private String correo;
-    private int telefono;
+  
     private int usuario_id;
-    private String direccion;
+      private String nombre ;
+    private String apellido;
+    private int telefono;
+   private String direccion;
+       private String correo;
     private String Fecha_nacimiento;
-    private int rol_id;
+   private int rol_id;
+   private int estado;
     private String contra;
-
-    public usuarios(String nombre, String apellido, String rol, String correo, int telefono, int usuario_id, String direccion, String Fecha_nacimiento, int rol_id, String contra) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.rol = rol;
-        this.correo = correo;
-        this.telefono = telefono;
+//constructor general
+    public usuarios(int usuario_id, String nombre, String apellido, int telefono, String direccion, String correo, String Fecha_nacimiento, int rol_id, int estado, String contra) {
         this.usuario_id = usuario_id;
-        this.direccion = direccion;
-        this.Fecha_nacimiento = Fecha_nacimiento;
-        this.rol_id = rol_id;
-        this.contra = contra;
-    }
-
-    public usuarios(String nombre, String apellido, String rol, String correo, int telefono) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.rol = rol;
-        this.correo = correo;
-        this.telefono = telefono;
-    }
-
-    public usuarios(String nombre, String apellido, String correo, int telefono, String direccion, String Fecha_nacimiento, String contra) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.correo = correo;
         this.telefono = telefono;
         this.direccion = direccion;
+        this.correo = correo;
         this.Fecha_nacimiento = Fecha_nacimiento;
+        this.rol_id = rol_id;
+        this.estado = estado;
         this.contra = contra;
     }
-
-    public usuarios(String nombre, String apellido, int rol_id) {
+//contructor para metodo enviar
+    public usuarios(String nombre, String apellido, int telefono, String direccion, String correo, String Fecha_nacimiento, int rol_id, int estado, String contra) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.correo = correo;
+        this.Fecha_nacimiento = Fecha_nacimiento;
+        this.rol_id = rol_id;
+        this.estado = estado;
+        this.contra = contra;
+    }
+//contructor para listar
+    public usuarios(int usuario_id,String nombre, String apellido,int rol_id, String correo, int telefono ) {
+        this.usuario_id = usuario_id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.rol_id = rol_id;
+        this.correo = correo;
+        this.telefono = telefono;
+        
     }
+
     
+    
+    
+    
+    public int getUsuario_id() {
+        return usuario_id;
+    }
+
+    public void setUsuario_id(int usuario_id) {
+        this.usuario_id = usuario_id;
+    }
 
     public String getNombre() {
         return nombre;
@@ -75,22 +85,6 @@ public class usuarios {
         this.apellido = apellido;
     }
 
-    public String getRol() {
-        return rol;
-    }
-
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
     public int getTelefono() {
         return telefono;
     }
@@ -99,20 +93,20 @@ public class usuarios {
         this.telefono = telefono;
     }
 
-    public int getUsuario_id() {
-        return usuario_id;
-    }
-
-    public void setUsuario_id(int usuario_id) {
-        this.usuario_id = usuario_id;
-    }
-
     public String getDireccion() {
         return direccion;
     }
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public String getFecha_nacimiento() {
@@ -131,6 +125,14 @@ public class usuarios {
         this.rol_id = rol_id;
     }
 
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
     public String getContra() {
         return contra;
     }
@@ -138,9 +140,16 @@ public class usuarios {
     public void setContra(String contra) {
         this.contra = contra;
     }
-   
+
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
 }
-

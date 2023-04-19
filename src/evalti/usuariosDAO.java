@@ -21,7 +21,7 @@ public interface usuariosDAO {
     
      public void mod (usuarios usuario);
      
-     public void delete(int id);
+     public void delete(int usuario_id);
      
      public usuarios consultar(String correo, String contraseña);
     

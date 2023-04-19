@@ -5,6 +5,7 @@
  */
 package evalti;
 import java.awt.Image;
+import javax.swing.ButtonModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -37,6 +38,7 @@ public class CrearUs extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grupo1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         JTfecha = new javax.swing.JTextField();
         JTnombre = new javax.swing.JTextField();
@@ -44,7 +46,6 @@ public class CrearUs extends javax.swing.JFrame {
         JTelefono = new javax.swing.JTextField();
         JTdireccion = new javax.swing.JTextField();
         JTcorreo = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
         PFcontra = new javax.swing.JPasswordField();
         JRinactivo = new javax.swing.JRadioButton();
         JRactivo = new javax.swing.JRadioButton();
@@ -67,7 +68,6 @@ public class CrearUs extends javax.swing.JFrame {
         jPanel1.add(JTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 98, 260, 30));
         jPanel1.add(JTdireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 260, 30));
         jPanel1.add(JTcorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 162, 260, 30));
-        jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 162, 260, 30));
 
         PFcontra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,7 +75,16 @@ public class CrearUs extends javax.swing.JFrame {
             }
         });
         jPanel1.add(PFcontra, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 230, 30));
+
+        grupo1.add(JRinactivo);
         jPanel1.add(JRinactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 305, -1, -1));
+
+        grupo1.add(JRactivo);
+        JRactivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JRactivoActionPerformed(evt);
+            }
+        });
         jPanel1.add(JRactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 305, -1, -1));
 
         jButton1.setText("Agregar Usuario");
@@ -111,6 +120,13 @@ public class CrearUs extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+    
+//    private void agregarDatosCombobox() {
+//        JRactivo.addItem("Activo");
+//       JRinactivo.addItem("Inactivo");
+//    }
     private void PFcontraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PFcontraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PFcontraActionPerformed
@@ -143,6 +159,11 @@ public class CrearUs extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JTfechaActionPerformed
 
+    private void JRactivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JRactivoActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_JRactivoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -158,17 +179,12 @@ public class CrearUs extends javax.swing.JFrame {
 
 
  private void enviar() {
-        usuarios US = new usuarios (JTnombre.getText(), JTapellido.getText(), JTfecha.getText(),Integer.parseInt(JTelefono.getText()), JTdireccion.getText(), JTfecha.getText(),PFcontra.getText());
-      UsuariosDAORelacional USDAO = new UsuariosDAORelacional();
-        USDAO.crear(US);
-        
-
-
- }
-
-
-
-
+    ButtonModel seleccion = grupo1.getSelection();
+    int valor = seleccion.equals(JRactivo.getModel()) ? 1 : 0;
+    usuarios US = new usuarios(JTnombre.getText(), JTapellido.getText(), Integer.parseInt(JTelefono.getText()), JTdireccion.getText(), JTcorreo.getText(), JTfecha.getText(), 2, valor, PFcontra.getText());
+    UsuariosDAORelacional USDAO = new UsuariosDAORelacional();
+    USDAO.crear(US);
+}
 
 
     
@@ -183,10 +199,10 @@ public class CrearUs extends javax.swing.JFrame {
     private javax.swing.JTextField JTfecha;
     private javax.swing.JTextField JTnombre;
     private javax.swing.JPasswordField PFcontra;
+    private javax.swing.ButtonGroup grupo1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField10;
     // End of variables declaration//GEN-END:variables
 }

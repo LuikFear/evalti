@@ -22,7 +22,7 @@ public class MainUs extends javax.swing.JFrame {
     DefaultTableModel tabla2;
     public MainUs() {
         initComponents();
-//        datos();
+        datos();
          this.setLocationRelativeTo(this);
         
      SetimageLabel(jLabel1,"src/pic/mainblue.png");
@@ -131,10 +131,7 @@ public class MainUs extends javax.swing.JFrame {
 
     private void b4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b4ActionPerformed
         // TODO add your handling code here:
-        
-        login Newframe = new login() ;
-            Newframe.setVisible(true);
-            dispose();
+       
         
         
         
@@ -169,10 +166,7 @@ public class MainUs extends javax.swing.JFrame {
     
     }
     
-    
-    
-    
-    
+
     
      private void SetimageLabel(JLabel labelName, String root) {
         ImageIcon image = new ImageIcon(root);
@@ -185,25 +179,23 @@ public class MainUs extends javax.swing.JFrame {
         }
      
      
-//     
-//     private void datos(){
-//         String columnas []= {"NO,nombre,apellido,rol,correo,telefono"};
-//         tabla2 = new DefaultTableModel(null, columnas);
-//         UsuariosDAORelacional USDAO = new UsuariosDAORelacional();
-//         for (usuarios dat : USDAO.listar()) {
-//             Object help [] = new Object[5];
-//             help[1] = dat.getNombre();
-//             help[2] = dat.getApellido();
-//             help[3] = dat.getRol();
-//             help[4] = dat.getCorreo();
-//             help[4] = dat.getTelefono();
-//             tabla2.addRow(help);
-//         }
-//         jTable1.setModel(tabla2);
-//      
-//         
-//         
-//     }
+     
+     private void datos(){
+    String columnas []= {"NO","nombre","apellido","rol","Correo","telefono"};
+    tabla2 = new DefaultTableModel(null, columnas);
+    UsuariosDAORelacional USDAO = new UsuariosDAORelacional();
+    for (usuarios dat : USDAO.listar()) {
+        Object help [] = new Object[6];
+        help[0] = dat.getUsuario_id();
+        help[1] = dat.getNombre();
+        help[2] = dat.getApellido();
+        help[3] = dat.getRol_id();
+        help[4] = dat.getCorreo(); 
+        help[5] = dat.getTelefono();
+        tabla2.addRow(help);
+    }
+    jTable1.setModel(tabla2);
+}
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

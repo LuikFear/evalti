@@ -113,39 +113,7 @@ public class login extends javax.swing.JFrame {
      */
     
     
-    private void consulta()           
-    {
-    usuariosDAO UD = new usuariosDAO() {
-        @Override
-        public LinkedList<usuarios> listar() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public usuarios obtener(int usuario_id) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public void crear(usuarios usuario) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public void mod(usuarios usuario) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public void delete(int id) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public usuarios consultar(String correo, String contraseña) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-    };
+   
     
     
     
