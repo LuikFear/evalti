@@ -4,12 +4,14 @@
  * and open the template in the editor.
  */
 package evalti;
+
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author LuikFear
@@ -20,12 +22,15 @@ public class MainUs extends javax.swing.JFrame {
      * Creates new form MainUs
      */
     DefaultTableModel tabla2;
+    int fila = -1;
+    UsuariosDAORelacional dao = new UsuariosDAORelacional();
+
     public MainUs() {
         initComponents();
         datos();
-         this.setLocationRelativeTo(this);
-        
-     SetimageLabel(jLabel1,"src/pic/mainblue.png");
+        this.setLocationRelativeTo(this);
+
+        SetimageLabel(jLabel1, "src/pic/mainblue.png");
 //        SetimageLabel(jLabel2,"src/pic/edge.gif");
 //        SetimageLabel(jLabel3,"src/pictures/frame select.gif");
 //        SetimageLabel(jLabel4,"src/pictures/frame select.gif");
@@ -107,6 +112,11 @@ public class MainUs extends javax.swing.JFrame {
         jPanel1.add(b3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
         b2.setText("Eliminar Usuario");
+        b2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(b2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 370, 120, 40));
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 440));
 
@@ -125,82 +135,84 @@ public class MainUs extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void b1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b1ActionPerformed
-        // TODO add your handling code here:
-        
-      ModUs Newframe = new ModUs() ;
-            Newframe.setVisible(true);
-            dispose();
-        
+        fila = jTable1.getSelectedRow();
+        if (jTable1.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(null, "Elige una opcion", "Alerta", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int codigo = Integer.parseInt(jTable1.getValueAt(fila, 0).toString());
+            this.dispose();
+            new ModUs(dao.obtener(codigo)).setVisible(true);
+        }
     }//GEN-LAST:event_b1ActionPerformed
 
     private void b4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b4ActionPerformed
         // TODO add your handling code here:
-       
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_b4ActionPerformed
 
     private void b3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b3ActionPerformed
         // TODO add your handling code here:
-        
-        CrearUs Newframe = new CrearUs() ;
-            Newframe.setVisible(true);
-            dispose();
-        
-        
+
+        CrearUs Newframe = new CrearUs();
+        Newframe.setVisible(true);
+        dispose();
+
+
     }//GEN-LAST:event_b3ActionPerformed
+
+    private void b2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b2ActionPerformed
+        fila = jTable1.getSelectedRow();
+        if (jTable1.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(null, "Elige una opcion", "Alerta", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int codigo = Integer.parseInt(jTable1.getValueAt(fila, 0).toString());
+            dao.eliminar(codigo);
+            this.dispose();
+            new MainUs().setVisible(true);
+        }
+    }//GEN-LAST:event_b2ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    
-    
-    
-    
-    public void informacion (usuarios usuarios){
-    
-    J1.setText("Usuario: " + usuarios.getNombre()+ " " +usuarios.getApellido());
-    
-            if (usuarios.getRol_id()== 2) {
+    public void informacion(usuarios usuarios) {
+
+        J1.setText("Usuario: " + usuarios.getNombre() + " " + usuarios.getApellido());
+
+        if (usuarios.getRol_id() == 2) {
             b1.setVisible(false);
             b2.setVisible(false);
             b3.setVisible(false);
         }
-    
-    }
-    
 
-    
-     private void SetimageLabel(JLabel labelName, String root) {
+    }
+
+    private void SetimageLabel(JLabel labelName, String root) {
         ImageIcon image = new ImageIcon(root);
-        Icon icon = new ImageIcon(image.getImage().getScaledInstance(labelName.getWidth(), labelName.getHeight(),Image.SCALE_DEFAULT));
-        
+        Icon icon = new ImageIcon(image.getImage().getScaledInstance(labelName.getWidth(), labelName.getHeight(), Image.SCALE_DEFAULT));
+
         labelName.setIcon(icon);
         this.repaint();
-        
-        
-        }
-     
-     
-     
-     private void datos(){
-    String columnas []= {"NO","nombre","apellido","rol","Correo","telefono"};
-    tabla2 = new DefaultTableModel(null, columnas);
-    UsuariosDAORelacional USDAO = new UsuariosDAORelacional();
-    for (usuarios dat : USDAO.listar()) {
-        Object help [] = new Object[6];
-        help[0] = dat.getUsuario_id();
-        help[1] = dat.getNombre();
-        help[2] = dat.getApellido();
-        help[3] = dat.getRol_id();
-        help[4] = dat.getCorreo(); 
-        help[5] = dat.getTelefono();
-        tabla2.addRow(help);
+
     }
-    jTable1.setModel(tabla2);
-}
+
+    private void datos() {
+        String columnas[] = {"NO", "nombre", "apellido", "rol", "Correo", "telefono"};
+        tabla2 = new DefaultTableModel(null, columnas);
+        UsuariosDAORelacional USDAO = new UsuariosDAORelacional();
+        for (usuarios dat : USDAO.listar()) {
+            Object help[] = new Object[6];
+            help[0] = dat.getUsuario_id();
+            help[1] = dat.getNombre();
+            help[2] = dat.getApellido();
+            help[3] = dat.getRol_id();
+            help[4] = dat.getCorreo();
+            help[5] = dat.getTelefono();
+            tabla2.addRow(help);
+        }
+        jTable1.setModel(tabla2);
+    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

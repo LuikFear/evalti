@@ -103,9 +103,7 @@ public class login extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "Rellene los espacios");
         }
-          
-        
-       
+      
     }//GEN-LAST:event_jButton1ActionPerformed
 
  
